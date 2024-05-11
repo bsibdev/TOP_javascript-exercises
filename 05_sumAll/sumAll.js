@@ -3,6 +3,7 @@ const sumAll = function(inta,intb) {
 let startValue;
 let endValue;
 
+
 // conditional to assign start and end to correct ints
   if (inta <= intb && typeof inta == "number" && typeof intb =="number" && inta + intb >=0) {
     startValue = inta;
@@ -15,21 +16,19 @@ let endValue;
     }
 
 //create & fill array with values to add
-const range = [];
 
-for (let i = 0; i < endValue; i++) {
-    range.push(i);
-    return range;
-};
+const range = [];  
+for (let i = startValue; i < endValue; i++) {
+  range.push(i);
+}
 
 //add values of array elements together
-let sum = 0;
+let sum = endValue;
 for (let i = 0; i < range.length; i++) {
   sum += range[i];
 }
-
-return sum;
-
+let finalSum = sum;
+return finalSum;
 };
 
 
