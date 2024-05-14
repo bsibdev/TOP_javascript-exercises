@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div id="container">
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id="add-button">Add item</button>
+    </div>
+
+    <ul id="list">
+
+    </ul>
+
+    <script>
+      let input = '';
+
+      function addItem(){
+        const list = document.querySelector("#list")
+        const listItem = document.createElement("li");
+        
+        const itemName = document.querySelector("#item");
+        const title = document.createElement("span");
+        title.textContent = itemName.value;
+        listItem.appendChild(title);
+        
+        const removeItem = document.createElement("button");
+        removeItem.textContent = "Delete";
+        removeItem.addEventListener("click", () => {
+          list.removeChild(listItem);
+          console.log(`Removed ${itemName.value}`)
+        });
+        listItem.appendChild(removeItem);
+
+        list.appendChild(listItem);
+      }
+      const addButton = document.querySelector("#add-button")
+      addButton.addEventListener("click", () => {
+        addItem();  
+        /*alert("Item Added");*/
+        });
+
+        const container = document.querySelector("#container");
+        const clearButton = document.createElement("button");
+        clearButton.textContent = "Clear All";
+        clearButton.addEventListener("click",() => {
+          clearAll();
+        } )
+        container.appendChild(clearButton);
+
+        const lists = document.querySelectorAll("li");
+
+        function clearAll(){
+          const lists = document.querySelectorAll("li");
+          for (let i = 0; i < lists.length; i++) {
+            const listItem = document.querySelector("li");
+            listItem.remove();
+          }
+          console.log("Shopping List Cleared");
+        }
+    </script>
+  </body>
+</html>
